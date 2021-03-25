@@ -1,0 +1,26 @@
+body {
+    background-color: aqua;
+}
+
+.mainPage{
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+form{
+    font-family: 'Lexend', sans-serif;
+
+}
+.background{
+    background-color: salmon;
+}
+
+.background2{
+    background-color: greenyellow;
+    top: 200px;
+}
+
+.spacer{
+    margin-top: 10px;
+}
