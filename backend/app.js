@@ -1,10 +1,18 @@
-const express=require(express);
+const express = require('express');
 
-const app=expres();
+const bodyparser = require('body-parser');
+
+const app = express();
 
 const adminRoutes = require('./AdminRoutes/admin');
 
-app.use(adminRoutes);
+app.use('/', function (req, res) {
+    res.send("Hello world! You are on main page");
+});
+
+app.use('/', function (req, res) {
+    res.send("Hello world! You are on main page");
+});
 
 app.listen(3000);
 
