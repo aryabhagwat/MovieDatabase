@@ -1,26 +1,69 @@
+/* 
+COLORS
+#ECECEC - WHITE
+#90CCF4 - LIGHT BLUE
+#5DA2D5 - BLUE
+#F3D250 - YELLOW
+#F78888 - SALMON
+
+
+*/
+
 body {
     background-color: aqua;
 }
 
-.mainPage{
-    height: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
-}
+.my-container{
+    background-color: #ECECEC;
+ }
 
 form{
     font-family: 'Lexend', sans-serif;
 
 }
 .background{
-    background-color: salmon;
+    top: 200px;
+    padding-right: 100px;
+}
+
+.left-header{
+    font-family: 'Heebo', sans-serif;
+    font-size: 50px;
+    text-align: left;
+    color: #5DA2D5;
 }
 
 .background2{
-    background-color: greenyellow;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    /* box-shadow: -5px -3px 10px 0px rgb(0 0 0 / 10%), -1px -1px 20px 0 rgb(0 0 0 / 19%); */
     top: 200px;
 }
 
+.left-body{
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
+    color: #F78888;
+    text-shadow: 5px;
+}
+
+.highlighter{
+    color: #F78888;
+}
+
+.background:hover span{
+    transition: text-shadow 0.5s;
+    text-shadow: 2px 2px #5DA2D5;
+    transition-timing-function: ease-in-out;
+}
+
 .spacer{
-    margin-top: 10px;
+    margin-top: 50px;
+}
+
+.customButton{
+    background-color:#5DA2D5;
+    border-color: #5DA2D5;
 }

@@ -1,0 +1,31 @@
+/* 
+COLORS
+#ECECEC - WHITE
+#90CCF4 - LIGHT BLUE
+#5DA2D5 - BLUE
+#F3D250 - YELLOW
+#F78888 - SALMON
+*/
+
+.logo{
+    font-size: 25px;
+    font-weight: bold;
+    color: #90CCF4;
+}
+
+.logo:hover{
+    color: #5DA2D5;
+}
+
+.link-sub{
+    color: #90CCF4 !important;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 20px !important;
+}
+
+.link-sub:hover {
+    cursor: pointer;
+    color: #5DA2D5 !important;
+}
+  

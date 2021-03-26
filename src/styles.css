@@ -1,3 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+/* OSWALD - TEXTS */
 @import url('https://fonts.googleapis.com/css2?family=Lexend&family=Oswald&display=swap');
+/* HEEBO - HEADER */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap');
+
+
+body, html {
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+ 
+ .my-container{
+   width: 100vw;
+   height: 100vh;
+  
+ }
