@@ -7,7 +7,7 @@ const router=express.Router();
 
 console.log("you are in admin routes");
 
-router.get('/admin/Login', adminController.getLogin); 
+router.use('/Login', adminController.getLogin); 
 
 console.log("after login");
 module.exports = router;

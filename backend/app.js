@@ -10,11 +10,11 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.use('/admin', adminRoutes);
+
 app.use('/', function (req, res) {
     res.send("Hello world! You are on main page");
 });
-
-app.use('/admin', adminRoutes);
 
 app.listen(3000);
 
