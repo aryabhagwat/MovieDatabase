@@ -59,12 +59,6 @@ form{
     color: #F78888;
 }
 
-.background:hover span{
-    transition: text-shadow 0.5s;
-    text-shadow: 2px 2px #5DA2D5;
-    transition-timing-function: ease-in-out;
-}
-
 .spacer{
     margin-top: 25px;
 }
