@@ -1,12 +1,10 @@
-/* 
-COLORS
-#ECECEC - WHITE
-#90CCF4 - LIGHT BLUE
-#5DA2D5 - BLUE
-#F3D250 - YELLOW
-#F78888 - SALMON
-
-
+/*
+COLORS 
+Blue: #227C9D
+Red: #FE6D73
+Yellow: #FFCB77
+White: #ECECEC
+Green: #17C3B2
 */
 
 body {
@@ -17,19 +15,13 @@ body {
     background-color: #ECECEC;
  }
 
-.mainPage{
-    padding-left: 5%;
-    padding-right: 5%;
-    height: 250px;
-}
-
 form{
     font-family: 'Lexend', sans-serif;
 
 }
 .background{
+    top: 200px;
     padding-right: 100px;
-    top: 175px;
 }
 
 .left-header{
@@ -40,7 +32,7 @@ form{
 }
 
 .background2{
-    padding-top: 50px;
+    padding-top: 25px;
     padding-bottom: 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -57,6 +49,12 @@ form{
 
 .highlighter{
     color: #F78888;
+}
+
+.background:hover span{
+    transition: text-shadow 0.5s;
+    text-shadow: 2px 2px #5DA2D5;
+    transition-timing-function: ease-in-out;
 }
 
 .spacer{

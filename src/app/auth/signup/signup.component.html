@@ -2,7 +2,6 @@
     <div class="container mainPage">
         <div class="row">
             <div class="col">
-    
                 <div class="row align-items-center ">
                     <div class="col-md-7 background">
                         <div class="d-flex">
@@ -11,26 +10,40 @@
                         <div class="d-flex left-body">
                             We got you covered.
                         </div>
-                        <div>
-                        </div>
                     </div>
                     <div class="col-md-5 background2">
-                        <form class="form-group">
+                        <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="email">EMAIL</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input 
+                                        type="email" 
+                                        class="form-control" 
+                                        name="email"
+                                        formControlName="email"
+                                        >
+                                    <p class="error" *ngIf="this.mainForm.controls.email.invalid">{{ errorEmail }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="password">PASSWORD</label>
-                                    <input type="password" class="form-control" name="password">
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        name="password"
+                                        formControlName="password"                                        
+                                        >
+                                    <p class="error" *ngIf="this.mainForm.controls.password.invalid">{{ errorPassword }}</p>
+
                                 </div>
                             </div>
                             <div class="row justify-content-end spacer">
                                 <div class="col">
-                                    <button class="btn btn-primary btn-block customButton" type="submit">SIGN UP</button>
+                                    <button 
+                                        class="btn btn-primary btn-block customButton" 
+                                        type="submit"
+                                        >SIGN UP</button>
                                 </div>
                             </div>
                         </form>

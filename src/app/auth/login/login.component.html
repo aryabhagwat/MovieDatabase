@@ -14,24 +14,29 @@
                         </div>
                     </div>
                     <div class="col-md-5 background2">
-                        <form class="form-group">
+                        <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="email">EMAIL</label>
                                     <input type="email" class="form-control" name="email">
+                                    <p class="error" *ngIf="this.mainForm.controls.email.invalid">{{ errorEmail }}</p>
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="password">PASSWORD</label>
                                     <input type="password" class="form-control" name="password">
+                                    <p class="error" *ngIf="this.mainForm.controls.password.invalid">{{ errorPassword }}</p>
+
                                 </div>
                             </div>
                             <div class="row justify-content-end spacer">
                                 <div class="col">
                                     <button class="btn btn-primary btn-block customButton" type="submit">LOGIN</button>
-                                    <a [routerLink]="'/signup'">
-                                        <i> New to <span class="highlighter">MD</span>? Please click here to signup. </i>
+                                
+                                    <a style="top: 20px;" class="left-body" [routerLink]="'/signup'">
+                                        <i > New to <span class="highlighter">MD</span>? Please click here to signup. </i>
                                     </a>
                                 </div>
                             </div>

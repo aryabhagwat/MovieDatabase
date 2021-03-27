@@ -7,28 +7,40 @@ COLORS
 #F78888 - SALMON
 */
 
-body {
-    background-color: aqua;
-}
+
+/*
+COLORS 
+Blue: #227C9D
+Red: #FE6D73
+Yellow: #FFCB77
+White: #ECECEC
+Green: #17C3B2
+*/
 
 .my-container{
     background-color: #ECECEC;
  }
+
+.mainPage{
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 250px;
+}
 
 form{
     font-family: 'Lexend', sans-serif;
 
 }
 .background{
-    top: 200px;
     padding-right: 100px;
+    top: 175px;
 }
 
 .left-header{
     font-family: 'Heebo', sans-serif;
     font-size: 40px;
     text-align: left;
-    color: #5DA2D5;
+    color: #227C9D;
 }
 
 .background2{
@@ -43,25 +55,14 @@ form{
 .left-body{
     font-family: 'Lexend', sans-serif;
     text-align: center;
-    color: #F78888;
+    color: #FE6D73;
     text-shadow: 5px;
 }
 
 .highlighter{
-    color: #F78888;
-}
-
-.background:hover span{
-    transition: text-shadow 0.5s;
-    text-shadow: 2px 2px #5DA2D5;
-    transition-timing-function: ease-in-out;
+    color: #FE6D73;
 }
 
 .spacer{
     margin-top: 25px;
-}
-
-.customButton{
-    background-color:#5DA2D5;
-    border-color: #5DA2D5;
 }

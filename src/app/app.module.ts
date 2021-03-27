@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 import { headerComponent } from './header/header.component';
-import { loginComponent } from './login/login.component';
-import { signupComponent } from './signup/signup.component';
+import { loginComponent } from './auth/login/login.component';
+import { signupComponent } from './auth/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { signupComponent } from './signup/signup.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutes
+    ReactiveFormsModule,
+    AppRoutes,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
