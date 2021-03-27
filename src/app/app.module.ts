@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
 import { headerComponent } from './header/header.component';
 import { loginComponent } from './login/login.component';
 import { signupComponent } from './signup/signup.component';
@@ -14,7 +15,8 @@ import { signupComponent } from './signup/signup.component';
     signupComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutes
   ],
   providers: [],
   bootstrap: [AppComponent]
