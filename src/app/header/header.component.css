@@ -15,7 +15,7 @@ Green: #17C3B2
 
 .logo:hover{
     cursor: pointer;
-    color: #FC4A1A;
+    color: #FE6D73;
 }
 
 .link-sub{
@@ -27,6 +27,6 @@ Green: #17C3B2
 
 .link-sub:hover {
     cursor: pointer;
-    color: #FC4A1A !important;
+    color: #FE6D73 !important;
 }
   
