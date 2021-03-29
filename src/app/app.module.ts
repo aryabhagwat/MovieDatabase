@@ -8,13 +8,15 @@ import { headerComponent } from './header/header.component';
 import { loginComponent } from './auth/login/login.component';
 import { signupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MovieListComponent } from './movies/movieList/movie-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     headerComponent,
     loginComponent,
-    signupComponent
+    signupComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
