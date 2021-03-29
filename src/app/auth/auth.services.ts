@@ -20,9 +20,9 @@ export class AuthServices{
     }
 
     login(user: UserModel){
-        this.http.post('', {user})
+        this.http.post('http://localhost:3000/login', {user})
             .subscribe(response => {
-
+                console.log(response);
             })
     }
 }
