@@ -11,12 +11,27 @@ Green: #17C3B2
     background-color: #ECECEC;
 }
 
-h3{
-    font-family: 'Heebo', sans-serif;
-    text-align: center;
+.welcomePage{
+    width: auto;
+    height: 600px;
+    background-color: #c2c1c1 !important;
+    padding-top: 200px;
 }
 
-h5{
+h1, h2, h3, h5{
+    color:#227C9D;
+    padding-left: 20px;
     font-family: 'Lexend', sans-serif;
-    text-align: center;
+    text-align: left;
+}
+
+h3{
+    color:#FE6D73;
+    padding-left: 20px;
+    font-family: 'Lexend', sans-serif;
+    text-align: left;
+}
+
+.welcomeButton{
+    padding-left: 35px;
 }

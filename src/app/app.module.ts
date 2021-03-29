@@ -9,11 +9,13 @@ import { loginComponent } from './auth/login/login.component';
 import { signupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieListComponent } from './movies/movieList/movie-list.component';
+import { welcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     headerComponent,
+    welcomeComponent,
     loginComponent,
     signupComponent,
     MovieListComponent
