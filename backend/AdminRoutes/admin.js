@@ -14,7 +14,9 @@ router.use('/Login', adminController.getLogin);
 router.use('/Login', adminController.postLogin); */
 
 /*Post /admin/gettestLogin */
-router.use('/getlogin', adminController.gettestLogin); 
+router.get('/getlogin', adminController.gettestLogin); 
+
+router.post('/login', adminController.postLogin); 
 
 console.log("after login");
 module.exports = router;

@@ -12,12 +12,22 @@ app.use(express.urlencoded({
 
 app.use('/admin', adminRoutes);
 
+app.use('/login', function (req, res) {
+    const email = req.body.email;
+    const password = req.body.password;
+    
+    res.status(201).json({
+      message: 'User created successfully!',
+      User: { id: new Date().toISOString(), email: email, password: password }
+    });
+});
+
 app.use('/', function (req, res) {
     console.log(req.body);
     res.send("Hello world! You are on main page");
 });
 
-app.listen(3000); 
+app.listen(3000);
 
 
 
