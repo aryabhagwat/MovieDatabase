@@ -1,7 +1,8 @@
 const express = require('express');
 
-const app = express();
+const mongoose = require('mongoose');
 
+const app = express();
 const adminRoutes = require('./AdminRoutes/admin');
 
 app.use(express.json());
@@ -22,10 +23,10 @@ app.use('/admin', adminRoutes);
 app.use('/login', function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
-    
+
     res.status(201).json({
-      message: 'User created successfully!',
-      User: { id: new Date().toISOString(), email: email, password: password }
+        message: 'User created successfully!',
+        User: { id: new Date().toISOString(), email: email, password: password }
     });
 });
 
@@ -34,7 +35,15 @@ app.use('/', function (req, res) {
     res.send("Hello world! You are on main page");
 });
 
-app.listen(3000);
+mongoose.connect("mongodb+srv://aryabhagwat:aryabhagwat@cluster0.cyz82.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then(
+result => {
+    console.log('mongodb connected!');
+    app.listen(3000);
+}
+
+).catch(err => console.log(err));
+
+
 
 
 
