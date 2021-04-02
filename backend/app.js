@@ -25,8 +25,8 @@ app.use('/admin', adminRoutes);
 app.use('/login', function (req, res) {
     
     console.log('In login');
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.user.email;
+    const password = req.body.user.password;
 
     res.status(201).json({
         message: 'User logged in successfully!',
@@ -34,11 +34,11 @@ app.use('/login', function (req, res) {
     });
 });
 
-app.post('/signup', function (req, res) {
+app.post('/admin/signup', function (req, res) {
 
     console.log('In signup');
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.user.email;
+    const password = req.body.user.password;
     const user=new User({
         email:email,
         password:password
@@ -61,7 +61,7 @@ app.use('/', function (req, res) {
     res.send("Hello world! You are on main page");
 });
 
-mongoose.connect("mongodb+srv://aryabhagwat:aryabhagwat@cluster0.cyz82.mongodb.net/moviedatabase?retryWrites=true&w=majority?authSource=admin").then(
+mongoose.connect("mongodb+srv://aryabhagwat:aryabhagwat@cluster0.cyz82.mongodb.net/moviedatabase?retryWrites=true&w=majority").then(
     result => {
         console.log('mongodb connected!');
         app.listen(3000);
