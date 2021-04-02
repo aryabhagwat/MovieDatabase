@@ -61,7 +61,7 @@ app.use('/', function (req, res) {
     res.send("Hello world! You are on main page");
 });
 
-mongoose.connect("mongodb+srv://aryabhagwat:aryabhagwat@cluster0.cyz82.mongodb.net/myFirstDatabase?retryWrites=true&w=majority?authSource=admin").then(
+mongoose.connect("mongodb+srv://aryabhagwat:aryabhagwat@cluster0.cyz82.mongodb.net/moviedatabase?retryWrites=true&w=majority?authSource=admin").then(
     result => {
         console.log('mongodb connected!');
         app.listen(3000);
