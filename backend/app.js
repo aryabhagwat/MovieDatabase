@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { body } = require('express-validator/check');
 const { validationResult } = require('express-validator/check');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 const adminRoutes = require('./AdminRoutes/admin');
@@ -39,27 +40,47 @@ app.post('/login', function (req, res) {
 
 
 app.post('/admin/signup', [
-    body('email').isEmail().withMessage('Please enter valid email')
+    body('user.email').isEmail().withMessage('Please enter valid email')
         .custom((value, { req }) => {
-            return User.findOne({email:value}).then(userDoc =>{
-                if(userDoc){
+            return User.findOne({ email: value }).then(userDoc => {
+                if (userDoc) {
+                    console.log('User already exists');
                     return Promise.reject('User already exists');
                 }
             });
         })
-        ,body('password').trim().isLength({min:7})
+    , body('user.password').trim().isLength({ min: 6 })
 ], function (req, res) {
-    
-    const errors=validationResult(req);
-    if(!errors.isEmpty){
-        const error=new Error('Validation Failed');
-        error.statusCode=422;
-        error.data=errors.array();
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        const error = new Error('Validation Failed');
+        error.statusCode = 422;
+        error.data = errors.array();
+        console.log(error);
         throw error;
     }
 
     const email = req.body.user.email;
     const password = req.body.user.password;
+    bcrypt.hash(password, 12).
+        then(hashedpwd => {
+            const user = new User({
+                email: email,
+                password: hashedpwd
+            });
+            return user.save();
+        })
+        .then(result => {
+            res.status(201).json({message:'User created',userID:result._id});
+        })
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+
+/*
     const user = new User({
         email: email,
         password: password
@@ -74,7 +95,7 @@ app.post('/admin/signup', [
     }).catch(err => {
         console.log(err);
     });
-
+*/
 });
 
 app.use('/', function (req, res) {
