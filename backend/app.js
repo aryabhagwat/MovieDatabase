@@ -1,11 +1,13 @@
 const express = require('express');
 
 const mongoose = require('mongoose');
+const { body } = require('express-validator/check');
+const { validationResult } = require('express-validator/check');
 
 const app = express();
 const adminRoutes = require('./AdminRoutes/admin');
 
-const User=require('./Models/user');
+const User = require('./Models/user');
 
 app.use(express.json());
 
@@ -22,11 +24,12 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 
-app.use('/login', function (req, res) {
-    
-    console.log('In login');
+app.post('/login', function (req, res) {
+
+    console.log('In login ');
     const email = req.body.user.email;
     const password = req.body.user.password;
+
 
     res.status(201).json({
         message: 'User logged in successfully!',
@@ -34,26 +37,44 @@ app.use('/login', function (req, res) {
     });
 });
 
-app.post('/admin/signup', function (req, res) {
 
-    console.log('In signup');
+app.post('/admin/signup', [
+    body('email').isEmail().withMessage('Please enter valid email')
+        .custom((value, { req }) => {
+            return User.findOne({email:value}).then(userDoc =>{
+                if(userDoc){
+                    return Promise.reject('User already exists');
+                }
+            });
+        })
+        ,body('password').trim().isLength({min:7})
+], function (req, res) {
+    
+    const errors=validationResult(req);
+    if(!errors.isEmpty){
+        const error=new Error('Validation Failed');
+        error.statusCode=422;
+        error.data=errors.array();
+        throw error;
+    }
+
     const email = req.body.user.email;
     const password = req.body.user.password;
-    const user=new User({
-        email:email,
-        password:password
+    const user = new User({
+        email: email,
+        password: password
     });
-    user.save().then( result=> {
-        
-    console.log('In signup save');
+
+    user.save().then(result => {
         console.log(result);
         res.status(201).json({
-            message: 'User logged in successfully!',
-            User:result
+            message: 'User signed in successfully!',
+            User: result
         });
     }).catch(err => {
         console.log(err);
-    });    
+    });
+
 });
 
 app.use('/', function (req, res) {
