@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { body } = require('express-validator/check');
 const { validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const adminRoutes = require('./AdminRoutes/admin');
@@ -30,12 +31,40 @@ app.post('/login', function (req, res) {
     console.log('In login ');
     const email = req.body.user.email;
     const password = req.body.user.password;
+    let loadedUser;
+    User.findOne({ email: email })
+        .then(user => {
+            if (!user) {
+                const error = new Error('User not found');
+                error.statusCode = 401;
+                throw error;
+            }
+            loadeduser = user;
+            return bcrypt.compare(password, user.password);
+        })
+        .then(isEqual => {
+            if (!isEqual) {
+                const error = new Error('Password Incorrect');
+                error.statusCode = 401;
+                throw error;
+            }
+            const token = jwt.sign(
+                { 
+                    email: loadeduser.email, userID: loadeduser._id.toString() 
+                },
+                'moviedatabaseSecretKey',
+                {expiresIn: '2hr'}
 
-
-    res.status(201).json({
-        message: 'User logged in successfully!',
-        User: { id: new Date().toISOString(), email: email, password: password }
-    });
+            );
+            console.log('User logged in');
+            res.status(200).json({token:token,userID:loadeduser._id.tostring()});
+        })
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
 });
 
 
@@ -71,7 +100,7 @@ app.post('/admin/signup', [
             return user.save();
         })
         .then(result => {
-            res.status(201).json({message:'User created',userID:result._id});
+            res.status(201).json({ message: 'User created', userID: result._id });
         })
         .catch(err => {
             if (!err.statusCode) {
@@ -80,22 +109,22 @@ app.post('/admin/signup', [
             next(err);
         });
 
-/*
-    const user = new User({
-        email: email,
-        password: password
-    });
-
-    user.save().then(result => {
-        console.log(result);
-        res.status(201).json({
-            message: 'User signed in successfully!',
-            User: result
+    /*
+        const user = new User({
+            email: email,
+            password: password
         });
-    }).catch(err => {
-        console.log(err);
-    });
-*/
+    
+        user.save().then(result => {
+            console.log(result);
+            res.status(201).json({
+                message: 'User signed in successfully!',
+                User: result
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    */
 });
 
 app.use('/', function (req, res) {
