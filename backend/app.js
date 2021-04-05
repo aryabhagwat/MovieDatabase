@@ -57,7 +57,7 @@ app.post('/login', function (req, res,next) {
 
             );
             console.log('User logged in');
-            res.status(200).json({message: 'User logged in',token:token,userID:loadeduser._id.tostring()});
+            res.status(200).json({message: 'User logged in',token:token,userID:loadeduser._id.toString()});
         })
         .catch(err => {
             if (!err.statusCode) {
