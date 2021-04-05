@@ -57,7 +57,7 @@ app.post('/login', function (req, res) {
 
             );
             console.log('User logged in');
-            res.status(200).json({token:token,userID:loadeduser._id.tostring()});
+            res.status(200).json({message: 'User created',token:token,userID:loadeduser._id.tostring()});
         })
         .catch(err => {
             if (!err.statusCode) {
