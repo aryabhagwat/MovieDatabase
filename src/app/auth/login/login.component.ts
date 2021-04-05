@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { UserModel } from "src/app/models/user.model";
 import { AuthServices } from "../auth.services";
 
@@ -9,27 +10,39 @@ import { AuthServices } from "../auth.services";
     styleUrls: ['./login.component.css']
 })
 
-export class loginComponent
-{
+export class loginComponent implements OnInit {
+
+    isAuthenticated: boolean = false;
     mainForm: FormGroup = new FormGroup({
-        email : new FormControl('', [Validators.required, Validators.email]),
-        password : new FormControl('', [Validators.required, Validators.minLength(6)])
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
 
     errorEmail = "";
     errorPassword = "";
 
-    constructor(private authServices: AuthServices){}
+    constructor(private authServices: AuthServices, private router: Router) { }
 
-    onSubmit(){
-        if(this.mainForm.controls.email.invalid){
+    ngOnInit(): void {
+        this.authServices.user.subscribe(response => {
+            if(response){
+                this.isAuthenticated = true;
+                this.router.navigate(['movie-list']);
+            }
+        }, error => {
+            this.isAuthenticated = false;
+        })
+    }
+
+    onSubmit() {
+        if (this.mainForm.controls.email.invalid) {
             this.errorEmail = "Please enter a correct email.";
         }
-        if(this.mainForm.controls.password.invalid){
+        if (this.mainForm.controls.password.invalid) {
             this.errorPassword = "Passwords must be 6 characters long.";
         }
 
-        if(this.mainForm.invalid){
+        if (this.mainForm.invalid) {
             return;
         }
 
