@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 
-app.post('/login', function (req, res) {
+app.post('/login', function (req, res,next) {
 
     console.log('In login ');
     const email = req.body.user.email;
@@ -57,7 +57,7 @@ app.post('/login', function (req, res) {
 
             );
             console.log('User logged in');
-            res.status(200).json({message: 'User created',token:token,userID:loadeduser._id.tostring()});
+            res.status(200).json({message: 'User logged in',token:token,userID:loadeduser._id.tostring()});
         })
         .catch(err => {
             if (!err.statusCode) {
@@ -79,7 +79,7 @@ app.post('/admin/signup', [
             });
         })
     , body('user.password').trim().isLength({ min: 6 })
-], function (req, res) {
+], function (req, res,next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const error = new Error('Validation Failed');
