@@ -1,0 +1,37 @@
+.col-md-4{
+    padding-top: 50px;
+}
+
+.card-body{
+    padding: 10px !important;
+}
+
+.movieCard{
+    width: 300px;
+}
+
+.movieImage{
+    width: 300px;
+    height: 450px;
+}
+
+img{    
+    opacity: 70%;
+}
+
+img:hover{
+    opacity: 100%;
+    transition: transform .2s;
+    transform: scale(1.01);
+}
+
+.watchedButton{
+   
+    background-color: #FE6D73;
+    border-color: #FE6D73;
+}
+
+.addButton{
+    background-color: #227C9D;
+    border-color: #227C9D;
+}
