@@ -1,24 +1,10 @@
 /* 
 COLORS
-#ECECEC - WHITE
-#90CCF4 - LIGHT BLUE
-#5DA2D5 - BLUE
-#F3D250 - YELLOW
-#F78888 - SALMON
-*/
-
-
-/*
-COLORS 
-Blue: #227C9D
-Red: #FE6D73
-Yellow: #FFCB77
-White: #ECECEC
-Green: #17C3B2
+#6474E5
 */
 
 .my-container{
-    background-color: #ECECEC;
+    background-color: #6474E5;
  }
 
 .mainPage{
@@ -40,7 +26,7 @@ form{
     font-family: 'Heebo', sans-serif;
     font-size: 40px;
     text-align: left;
-    color: #227C9D;
+    color: white;
 }
 
 .background2{
@@ -48,14 +34,14 @@ form{
     padding-bottom: 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    /* box-shadow: -5px -3px 10px 0px rgb(0 0 0 / 10%), -1px -1px 20px 0 rgb(0 0 0 / 19%); */
+    background-color: white;
     top: 200px;
 }
 
 .left-body{
     font-family: 'Lexend', sans-serif;
     text-align: center;
-    color: #FE6D73;
+    color: white;
     text-shadow: 5px;
 }
 

@@ -1,32 +1,53 @@
 /*
 COLORS 
-Blue: #227C9D
-Red: #FE6D73
-Yellow: #FFCB77
-White: #ECECEC
-Green: #17C3B2
+#6474E5
 */
 
+
 .logo{
-    font-size: 25px;
-    font-weight: bold;
-    color: #227C9D;
+    width: 50px;
+    height: 50px;
 }
 
 .logo:hover{
     cursor: pointer;
-    color: #FE6D73;
+    transform: scale(1.1);
+    transition: 0.2s all ease-in-out;
 }
 
 .link-sub{
-    color: #227C9D !important;
+    color: #6474E5 !important;
     text-align: right;
     font-weight: bold;
-    padding-right: 20px !important;
+    margin-right: 30px !important;
+    padding-top: 15px;
+    transition: 0.2s all ease-in-out;
 }
 
 .link-sub:hover {
     cursor: pointer;
-    color: #FE6D73 !important;
+    transition: 0.2s all ease-in-out;
+    border-bottom: 3px solid #6474E5;
 }
   
+
+.loginButton{
+    background-color: #6474E5;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin-right: 40px;
+    transition: 0.2s all ease-in-out;
+}
+
+.loginButton:hover{
+    transition: 0.2s all ease-in-out;
+    background-color: white;
+    border: 3px solid #6474E5;
+    color: #6474E5;
+}
+

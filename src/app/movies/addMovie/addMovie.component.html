@@ -5,27 +5,70 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label for="name">Movie Name</label>
-                        <input type="text" class="form-control" name="name" formControlName="movieName">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="name"
+                            formControlName="movieName"
+                            autocomplete="off"
+                            >
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="genre">Movie Genre</label>
-                        <input type="text" (keyup.enter)="addBadge($event.target.value)" class="form-control"
-                            name="genre" formControlName="movieGenre"
+                        <label for="genre">Genre</label>
+                        <input type="text" 
+                            (keyup.enter)="addBadge($event.target.value)" 
+                            class="form-control"
+                            name="genre" 
+                            formControlName="movieGenre"
                             autocomplete="off">
                         <div class="badgeContainer" formArrayName="movieBadge">
                             <div class="badgeDiv" *ngFor="let b of controls; let i = index" [formGroupName]="i">
-                                <span class="badge badge-pill badge-primary" name="badge" (click)="removeBadge(i)"> {{b.value.badge.toUpperCase()}} </span>
+                                <span 
+                                    class="badge badge-pill badge-primary" 
+                                    name="badge" 
+                                    (click)="removeBadge(i)"> 
+                                    {{b.value.badge.toUpperCase()}} 
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control"
+                            name="desc"
+                            formControlName="movieDescription">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="imageLink">Image URL</label>
+                        <input class="form-control" 
+                            name="imageLink"
+                            formControlName="movieImage"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <button 
+                            class="btn btn-success submitButtons"
+                            (click)="addMovie()"
+                            > 
+                            ADD
+                        </button>                        
+                        <button class="btn btn-danger">
+                            CANCEL
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="col-md-4">
-            <!-- <movieCard></movieCard> -->
+            <movieCard [movie]="enteredDetails"></movieCard>
         </div>
     </div>
 </div>

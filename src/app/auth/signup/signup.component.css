@@ -1,20 +1,17 @@
-/*
-COLORS 
-Blue: #227C9D
-Red: #FE6D73
-Yellow: #FFCB77
-White: #ECECEC
-Green: #17C3B2
+/* 
+COLORS
+#6474E5
 */
 
+
 .my-container{
-    background-color: #ECECEC;
+    background-color: #6474E5;
  }
 
 form{
     font-family: 'Lexend', sans-serif;
-
 }
+
 .background{
     top: 200px;
     padding-right: 100px;
@@ -24,10 +21,11 @@ form{
     font-family: 'Heebo', sans-serif;
     font-size: 40px;
     text-align: left;
-    color: #227C9D;
+    color: #fff;
 }
 
 .background2{
+    background-color: #fff;
     padding-top: 25px;
     padding-bottom: 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -39,12 +37,12 @@ form{
 .left-body{
     font-family: 'Lexend', sans-serif;
     text-align: center;
-    color: #FE6D73;
+    color: #fff;
     text-shadow: 5px;
 }
 
 .highlighter{
-    color: #FE6D73;
+    color: #fff;
 }
 
 .background:hover span{
