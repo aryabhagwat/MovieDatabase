@@ -18,5 +18,7 @@ router.get('/getlogin', adminController.gettestLogin);
 
 router.post('/login', adminController.postLogin); 
 
+router.post('/addMovie', adminController.addMovie); 
+
 console.log("after login");
 module.exports = router;

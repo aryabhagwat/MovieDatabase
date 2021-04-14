@@ -1,30 +1,64 @@
+
+const Movie = require('../models/movie');
+
+exports.addMovie = (req, res, next) => {
+    console.log("you are in controller addMovie");
+    const title = req.body.title;
+    const genre = req.body.genre;
+    const description = req.body.description;
+    const imageURL = req.body.imageURL;
+    const rating = req.body.rating;
+
+    const movie = new Movie({
+        title: title,
+        genre: genre,
+        description: description,
+        imageURL: imageURL,
+        rating: rating
+    });
+
+    movie.save().then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: 'Movie added successfully!',
+            Movie: result
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+};
+
 exports.getLogin = (req, res, next) => {
     console.log("you are in controller getLogin");
     res.send("Log in page");
 };
 
-/*exports.postLogin = (req, res, next) => {
-    console.log("you are in controller postLogin");
+
+exports.getMovies = (req, res, next) => {
+    console.log("you are in getMovies ");
+
     res.status(200).json({
         user: [{ "name": "arya", "email": "testemail@test.com" }]
     })
-};*/
+};
+
 
 exports.gettestLogin = (req, res, next) => {
-  /*  console.log("you are in controller postLogin");*/
-   res.status(200).json({
-       user: [{ "name": "arya", "email": "testemail@test.com" }]
+    /*  console.log("you are in controller postLogin");*/
+    res.status(200).json({
+        user: [{ "name": "arya", "email": "testemail@test.com" }]
     })
-   /* res.send("gettestLogin  page");*/
+    /* res.send("gettestLogin  page");*/
 };
 
 exports.postLogin = (req, res, next) => {
     /*  console.log("you are in controller postLogin");*/
     const email = req.body.email;
     const password = req.body.password;
-    
+
     res.status(201).json({
-      message: 'User created successfully!',
-      User: { id: new Date().toISOString(), email: email, password: password }
+        message: 'User created successfully!',
+        User: { id: new Date().toISOString(), email: email, password: password }
     });
 };
