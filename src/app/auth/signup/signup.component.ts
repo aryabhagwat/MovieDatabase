@@ -10,6 +10,9 @@ import { AuthServices } from "../auth.services";
 })
 export class signupComponent implements OnInit{
 
+    signupSuccess = undefined;
+    errorMessage = "";
+
     mainForm: FormGroup = new FormGroup({
         email : new FormControl('', [Validators.required, Validators.email]),
         password : new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -20,6 +23,7 @@ export class signupComponent implements OnInit{
     constructor(private authServices: AuthServices){}
 
     ngOnInit(){
+        
     }
 
     onSubmit(){
@@ -37,7 +41,15 @@ export class signupComponent implements OnInit{
         const email = this.mainForm.value.email;
         const password = this.mainForm.value.password;
         const user = new UserModel(email, password);
-        this.authServices.signUp(user);
+        this.authServices.signUp(user)
+            .subscribe(response => {
+                this.signupSuccess = true;
+                this.mainForm.reset();
+            }, error => {
+                console.log(error);
+                this.signupSuccess = false;
+                this.errorMessage = error;
+            })
     }
 
 }

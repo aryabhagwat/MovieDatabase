@@ -1,0 +1,12 @@
+.row{
+    padding-top: 40px;
+}
+
+.badgeContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.badgeDiv{
+    padding-right: 5px !important;
+}

@@ -56,3 +56,9 @@ form{
 .spacer{
     margin-top: 25px;
 }
+
+.signupMessages{
+    top: 175px;
+    font-size: medium;
+    margin: 0;
+}

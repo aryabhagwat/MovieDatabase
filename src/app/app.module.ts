@@ -10,6 +10,8 @@ import { signupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieListComponent } from './movies/movieList/movie-list.component';
 import { welcomeComponent } from './welcome/welcome.component';
+import { AddMovieComponent } from './movies/addMovie/addmovie.component';
+import { MovieCardComponent } from './movies/movieCard/movieCard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { welcomeComponent } from './welcome/welcome.component';
     welcomeComponent,
     loginComponent,
     signupComponent,
-    MovieListComponent
+    MovieCardComponent,
+    MovieListComponent,
+    AddMovieComponent,
   ],
   imports: [
     BrowserModule,
