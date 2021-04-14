@@ -7,12 +7,13 @@
 }
 
 .movieCard{
-    width: 300px;
+    width: 400px;
 }
 
 .movieImage{
-    width: 300px;
+    width: 400px;
     height: 450px;
+    overflow: hidden;
 }
 
 img{    

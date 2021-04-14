@@ -9,4 +9,13 @@
 
 .badgeDiv{
     padding-right: 5px !important;
+    cursor: pointer;
+}   
+
+textarea{
+    height: 200px;
+}
+
+.submitButtons{
+    margin-right: 20px;
 }

@@ -8,11 +8,7 @@
 
 /*
 COLORS 
-Blue: #227C9D
-Red: #FE6D73
-Yellow: #FFCB77
-White: #ECECEC
-Green: #17C3B2
+#6474E5
 */
 
 body, html {
@@ -28,25 +24,39 @@ body, html {
 
 .error{
   font-size: smaller;
-  color: #F78888;
+  color: #6474E5;
 }
 
 .customButton{
-  background-color:#227C9D;
-  border-color: #227C9D;
+  font-weight: bold;
+  border: 1px solid #6474E5;
+  color: #fff;
+  background-color: #6474E5; 
+  transition: 0.2s all ease-in-out;
 }
 
 .customButton:hover{
-  background-color: #FE6D73;
-  border-color: #FE6D73;
+  color: #6474E5;
+  background-color: #fff;
+  border-color: #6474E5;
+  transition: 0.2s all ease-in-out;
 }
 
 .customButton2{
-  background-color:#17C3B2;
-  border-color: #17C3B2; 
+  color: #6474E5;
+  background-color:#fff;
+  border-color: #6474E5;
+  transition: 0.2s all ease-in-out; 
 }
 
 .customButton2:hover{
-  background-color: #0f8074;
-  border-color: #0f8074;
+  color: #6474E5;
+  background-color:#fff;
+  border-color: #6474E5; 
+  transition: 0.2s all ease-in-out;
+}
+
+input:focus{
+  border-color: #6474E5 !important;
+  box-shadow: none !important;
 }
