@@ -1,5 +1,5 @@
 
-const Movie = require('../models/movie');
+const Movie = require('../Models/movie');
 
 exports.addMovie = (req, res, next) => {
     console.log("you are in controller addMovie");
@@ -37,6 +37,17 @@ exports.getLogin = (req, res, next) => {
 
 exports.getMovies = (req, res, next) => {
     console.log("you are in getMovies ");
+
+    Movie.find()
+    .then(movie => {
+        res.status(200).json({message: 'Movies Received',title:title,movieID:movie._id.toString()});
+    })
+    .catch(err => {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    });
 
     res.status(200).json({
         user: [{ "name": "arya", "email": "testemail@test.com" }]

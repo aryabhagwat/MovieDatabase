@@ -1,7 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator/check');
 
-const Movie = require('../models/movie');
+const Movie = require('../Models/movie');
 
 exports.addMovietest = (req, res, next) => {
     console.log("you are in controller addMovie");
