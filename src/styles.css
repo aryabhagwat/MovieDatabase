@@ -42,6 +42,21 @@ body, html {
   transition: 0.2s all ease-in-out;
 }
 
+.customButton:active{
+  color: #6474E5 !important; 
+  background-color: #fff !important;
+  border-color: #6474E5 !important;
+  transition: 0.2s all ease-in-out;
+}
+
+.customButton:focus{
+  color: #6474E5;
+  background-color: #fff;
+  border-color: #6474E5;
+  transition: 0.2s all ease-in-out;
+  box-shadow: none !important;
+}
+
 .customButton2{
   color: #6474E5;
   background-color:#fff;
@@ -56,7 +71,26 @@ body, html {
   transition: 0.2s all ease-in-out;
 }
 
-input:focus{
+.customButton2:active{
+  color: #6474E5 !important;
+  background-color:#fff !important;
+  border-color: #6474E5 !important;
+  transition: 0.2s all ease-in-out;
+  box-shadow: none !important;
+}
+
+.customButton2:focus{
+  color: #6474E5;
+  background-color:#fff;
+  border-color: #6474E5; 
+  transition: 0.2s all ease-in-out;
+  box-shadow: none !important;
+}
+
+
+
+input:focus,
+textarea:focus{
   border-color: #6474E5 !important;
   box-shadow: none !important;
 }

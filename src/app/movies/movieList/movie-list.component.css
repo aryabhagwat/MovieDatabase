@@ -1,14 +1,10 @@
 /*
 COLORS 
-Blue: #227C9D
-Red: #FE6D73
-Yellow: #FFCB77
-White: #ECECEC
-Green: #17C3B2
+#6474E5
 */
 
-.background{
-    background-color: red;
+.my-container{
+    /* background-color: #6474E5 */
 }
 
 .col-md-4{

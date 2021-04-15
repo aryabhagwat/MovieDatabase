@@ -1,3 +1,12 @@
+/* 
+COLORS
+#6474E5
+*/
+
+.my-container{
+    background-color: #6474E5 !important;
+ }
+
 .row{
     padding-top: 40px;
 }
@@ -12,10 +21,19 @@
     cursor: pointer;
 }   
 
+.badge{
+    background-color: #6474E5;
+}
+
 textarea{
-    height: 200px;
+    height: 100px;
 }
 
 .submitButtons{
     margin-right: 20px;
+}
+
+.customCard{
+    background-color: #fff;
+    border-radius: 5px;
 }

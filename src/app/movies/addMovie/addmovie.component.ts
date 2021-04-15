@@ -1,6 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { MovieModel } from "src/app/models/movie.model";
+import { MovieService } from "../movie.services";
 
 @Component({
     selector: 'add-movie',
@@ -9,7 +10,7 @@ import { FormArray, FormControl, FormGroup } from "@angular/forms";
 })
 export class AddMovieComponent {
 
-    constructor(private http: HttpClient) {
+    constructor(private movieService: MovieService) {
 
     }
 
@@ -54,22 +55,14 @@ export class AddMovieComponent {
     }
 
     addMovie() {
-        let title = this.movieAddForm.value.movieName
-        let genre = this.movieAddForm.value.movieGenre
-        let desc = this.movieAddForm.value.movieDescription
-        let img = this.movieAddForm.value.movieImage
-
-        this.http.post('http://localhost:3000/admin/addMovie', {
-            title: title,
-            genre: genre,
-            description: desc,
-            imageURL: img,
+        let movie: MovieModel = {
+            title: this.movieAddForm.value.movieName,
+            genre: this.movieAddForm.value.movieGenre,
+            description: this.movieAddForm.value.movieDescription,
+            imageURL: this.movieAddForm.value.movieImage,
             rating: 5
-        })
-            .subscribe(res => {
-                console.log(res);
-            })
-
-
+        }
+       
+        this.movieService.addMovie(movie);
     }
 }

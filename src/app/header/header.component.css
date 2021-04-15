@@ -21,7 +21,9 @@ COLORS
     font-weight: bold;
     margin-right: 30px !important;
     padding-top: 15px;
+    border-bottom: 3px solid #fff;
     transition: 0.2s all ease-in-out;
+    height: 50px;
 }
 
 .link-sub:hover {
@@ -30,7 +32,6 @@ COLORS
     border-bottom: 3px solid #6474E5;
 }
   
-
 .loginButton{
     background-color: #6474E5;
     padding: 10px;
@@ -38,7 +39,7 @@ COLORS
     padding-right: 20px;
     color: white;
     font-weight: bold;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 5px;
     margin-right: 40px;
     transition: 0.2s all ease-in-out;
@@ -47,7 +48,7 @@ COLORS
 .loginButton:hover{
     transition: 0.2s all ease-in-out;
     background-color: white;
-    border: 3px solid #6474E5;
+    border: 2px solid #6474E5;
     color: #6474E5;
 }
 

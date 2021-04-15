@@ -1,7 +1,7 @@
 <div class="my-container">
     <div class="row">
-        <div class="col welcomePage align-items-center">            
-            <div class="row">
+        <div class="col welcomeSection align-items-center">            
+            <div class="row mainComponentLimiter">
                 <div class="col-md-12">
                     <h1>KEEPING TRACK OF YOUR FAVOURITE MOVIES HAS NEVER BEEN EASIER! </h1>
                 </div>
@@ -18,9 +18,29 @@
             </div>
             <div class="row">
                 <div class="col-md-12 welcomeButton">
-                    <button [routerLink]="'/signup'" class="btn btn-primary btn-lg customButton">
+                    <button 
+                        [routerLink]="'/signup'" 
+                        class="btn btn-primary btn-lg customButton">
                         GET STARTED HERE
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col featureSection align-items-center">            
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="featureSectionImages" src="/assets/images/welcomePage/featureSection/add.png">
+                    <h1> Add Movies to watched list/to watch list </h1>
+                </div>
+                <div class="col-md-4">
+                    <img class="featureSectionImages" src="/assets/images/welcomePage/featureSection/clapperboard.png">
+                    <h1> Keep track of all the latest movies being released </h1>
+                </div>
+                <div class="col-md-4">
+                    <img class="featureSectionImages" src="/assets/images/welcomePage/featureSection/rating.png">
+                    <h1> Rate movies and share it with the world </h1>
                 </div>
             </div>
         </div>

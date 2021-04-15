@@ -1,74 +1,62 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <form [formGroup]="movieAddForm" class="form-group">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="name">Movie Name</label>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            name="name"
-                            formControlName="movieName"
-                            autocomplete="off"
-                            >
+<div class="my-container">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 customCard">
+                <form [formGroup]="movieAddForm" class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="name">Movie Name</label>
+                            <input type="text" class="form-control" name="name" formControlName="movieName"
+                                autocomplete="off">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="genre">Genre</label>
-                        <input type="text" 
-                            (keyup.enter)="addBadge($event.target.value)" 
-                            class="form-control"
-                            name="genre" 
-                            formControlName="movieGenre"
-                            autocomplete="off">
-                        <div class="badgeContainer" formArrayName="movieBadge">
-                            <div class="badgeDiv" *ngFor="let b of controls; let i = index" [formGroupName]="i">
-                                <span 
-                                    class="badge badge-pill badge-primary" 
-                                    name="badge" 
-                                    (click)="removeBadge(i)"> 
-                                    {{b.value.badge.toUpperCase()}} 
-                                </span>
+                    <div class="row">
+                        <div class="col-md-12 customCard">
+                            <label for="genre">Genre</label>
+                            <input type="text" (keyup.enter)="addBadge($event.target.value)" class="form-control"
+                                name="genre" formControlName="movieGenre" autocomplete="off">
+                            <div class="badgeContainer" formArrayName="movieBadge">
+                                <div class="badgeDiv" *ngFor="let b of controls; let i = index" [formGroupName]="i">
+                                    <span class="badge badge-pill badge-primary" name="badge" (click)="removeBadge(i)">
+                                        {{b.value.badge.toUpperCase()}}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="desc">Description</label>
-                        <textarea class="form-control"
-                            name="desc"
-                            formControlName="movieDescription">
-                        </textarea>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="desc">Description</label>
+                            <textarea class="form-control" name="desc" formControlName="movieDescription">
+                            </textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="imageLink">Image URL</label>
-                        <input class="form-control" 
-                            name="imageLink"
-                            formControlName="movieImage"/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="imageLink">Image URL</label>
+                            <input class="form-control" name="imageLink" formControlName="movieImage" />
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <button 
-                            class="btn btn-success submitButtons"
-                            (click)="addMovie()"
-                            > 
-                            ADD
-                        </button>                        
-                        <button class="btn btn-danger">
-                            CANCEL
-                        </button>
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <button 
+                                type="button" 
+                                class="btn btn-success btn-block submitButtons customButton" (click)="addMovie()">
+                                ADD
+                            </button>
+                            <button 
+                                type="button" 
+                                class="btn btn-danger btn-block customButton2">
+                                CANCEL
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <movieCard [movie]="enteredDetails"></movieCard>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <movieCard [movie]="enteredDetails"></movieCard>
+            </div>
         </div>
     </div>
 </div>

@@ -7,32 +7,67 @@
 }
 
 .movieCard{
-    width: 400px;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    border: 2px solid #6474E5;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-break: break-all;
+}
+
+.movieCard h4
+{
+    margin-top: 20px;
+    font-weight: bold;   
+    word-wrap: break-word;
+
 }
 
 .movieImage{
-    width: 400px;
-    height: 450px;
+    width:300px;
+    height: 400px;
     overflow: hidden;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
 }
 
-img{    
-    opacity: 70%;
+.watchedButton{   
+    background-color: #6474E5;
+    border-color: #6474E5;
 }
 
-img:hover{
-    opacity: 100%;
-    transition: transform .2s;
-    transform: scale(1.01);
+.watchedButton:active{
+    color: #6474E5 !important; 
+    background-color: #fff !important;
+    border-color: #6474E5 !important;
+    transition: 0.2s all ease-in-out;
 }
 
-.watchedButton{
-   
-    background-color: #FE6D73;
-    border-color: #FE6D73;
+.watchedButton:focus{
+    color: #6474E5 !important; 
+    background-color: #fff !important;
+    border-color: #6474E5 !important;
+    transition: 0.2s all ease-in-out;
+    box-shadow: none !important;
 }
 
-.addButton{
-    background-color: #227C9D;
-    border-color: #227C9D;
+.badgeContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.badgeDiv{
+    padding-right: 5px !important;   
+}   
+
+.badge{
+    background-color: #6474E5;
+}
+
+span{
+    margin-left: 5px;
 }
