@@ -39,8 +39,9 @@ exports.getMovies = (req, res, next) => {
     console.log("you are in getMovies ");
 
     Movie.find()
-    .then(movie => {
-        res.status(200).json({message: 'Movies Received',title:title,movieID:movie._id.toString()});
+    .then(movies => {
+        console.log(movies);
+        res.status(200).json({message: 'Movies Received',movies:movies.toString()});
     })
     .catch(err => {
         if (!err.statusCode) {
@@ -49,9 +50,9 @@ exports.getMovies = (req, res, next) => {
         next(err);
     });
 
-    res.status(200).json({
+   /* res.status(200).json({
         user: [{ "name": "arya", "email": "testemail@test.com" }]
-    })
+    })*/
 };
 
 

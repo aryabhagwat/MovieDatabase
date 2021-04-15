@@ -10,6 +10,7 @@ exports.addMovietest = (req, res, next) => {
     const description = req.body.description;
     const imageURL = req.body.imageURL;
     const rating = req.body.rating;
+    let loadedMovie;
 
     const movie = new Movie({
         title: title,
@@ -19,13 +20,24 @@ exports.addMovietest = (req, res, next) => {
         rating: rating
     });
 
-    movie.save().then(result => {
+    /* Movie.findOne({title:title})
+    .then(movie => {
+        if(movie)
+        {
+            return Promise.reject('User already exists');
+        }
+
+    })
+*/
+    movie.save().
+    then(result => {
         console.log(result);
         res.status(201).json({
             message: 'Movie added successfully!',
             Movie: result
         });
-    }).catch(err => {
+    })
+    .catch(err => {
         console.log(err);
     });
 
