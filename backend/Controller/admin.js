@@ -40,8 +40,9 @@ exports.getMovies = (req, res, next) => {
 
     Movie.find()
     .then(movies => {
+        console.log("In get movies");
         console.log(movies);
-        res.status(200).json({message: 'Movies Received',movies:movies.toString()});
+        res.status(200).json({message: 'Movies Received',movies:[...movies]});
     })
     .catch(err => {
         if (!err.statusCode) {
