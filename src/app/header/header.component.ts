@@ -14,7 +14,6 @@ export class headerComponent implements OnInit{
 
     ngOnInit(): void{
         this.authServices.user.subscribe(r => {
-            console.log(r);
             if(r){
                 this.isAuthenticated = true;
             }else{
@@ -27,7 +26,6 @@ export class headerComponent implements OnInit{
     }
     
     logout(){
-        console.log("HERE");
         this.authServices.logOut();
     }
 }

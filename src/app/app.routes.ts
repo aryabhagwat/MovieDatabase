@@ -10,8 +10,9 @@ const routes: Routes = [
     {path: '', component: welcomeComponent},
     {path: 'login', component: loginComponent},
     {path: 'signup', component: signupComponent},
-    {path: 'movieList', component: MovieListComponent},
-    {path: 'addMovie', component: AddMovieComponent}
+    {path: 'movies', component: MovieListComponent},
+    {path: 'movies/new', component: AddMovieComponent},
+    {path: 'movies/edit/:id', component: AddMovieComponent}
 ]
 
 

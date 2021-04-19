@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MovieModel } from "src/app/models/movie.model";
 import { MovieService } from "../movie.services";
 
@@ -8,12 +9,10 @@ import { MovieService } from "../movie.services";
     templateUrl: './addMovie.component.html',
     styleUrls: ['./addMovie.component.css']
 })
-export class AddMovieComponent {
+export class AddMovieComponent implements OnInit {
 
-    constructor(private movieService: MovieService) {
-
-    }
-
+    isEditMode: boolean = false;
+    
     movieAddForm: FormGroup = new FormGroup({
         movieName: new FormControl(''),
         movieGenre: new FormControl(''),
@@ -21,6 +20,26 @@ export class AddMovieComponent {
         movieDescription: new FormControl(''),
         movieImage: new FormControl(''),
     })
+
+    constructor(private movieService: MovieService,
+        private router: Router,
+        private route: ActivatedRoute) {
+
+    }
+
+    ngOnInit(){
+        this.route.params
+            .subscribe(res => {
+                if(res.id){
+                    this.isEditMode = true;
+                    
+
+                }
+            })
+        
+    }
+
+    
 
     get enteredDetails() {
         return {
@@ -31,7 +50,6 @@ export class AddMovieComponent {
             displayButtons: false,
         }
     }
-
 
     get controls() { // a getter!
         return (<FormArray>this.movieAddForm.get('movieBadge')).controls;
@@ -56,6 +74,7 @@ export class AddMovieComponent {
 
     addMovie() {
         let movie: MovieModel = {
+            id: '123123',
             title: this.movieAddForm.value.movieName,
             genre: this.movieAddForm.value.movieGenre,
             description: this.movieAddForm.value.movieDescription,

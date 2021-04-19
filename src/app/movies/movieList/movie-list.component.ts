@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { MovieModel } from "src/app/models/movie.model";
 import { MovieService } from "../movie.services";
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'movielist-component',
@@ -7,45 +9,30 @@ import { MovieService } from "../movie.services";
     styleUrls: ['./movie-list.component.css']
 })
 
-export class MovieListComponent implements OnInit{
-    movieList = [
-        {
-            movieName: 'UP',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        },
-        {
-            movieName: 'UP 2',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        },
-        {
-            movieName: 'UP 2',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        },
-        {
-            movieName: 'UP 2',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        },
-        {
-            movieName: 'UP 2',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        },
-        {
-            movieName: 'UP 2',
-            movieGenre: 'Animated',
-            movieLink: 'https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg'
-        }
-    ]   
+export class MovieListComponent implements OnInit {
+    movieList:MovieModel;
 
-    constructor(private movieService: MovieService){
+    constructor(private movieService: MovieService) {
 
     }
 
-    ngOnInit(){
-        this.movieService.getMovies();
+    ngOnInit() {
+        this.movieService.getMovies()
+            .pipe(
+                map((res: { message: string, movies:any }) => {
+                    return {
+                        movies: res.movies.map(r =>{
+                            return {
+                                id: r._id,
+                                ...r
+                            }
+                        }),
+                        message: res.message
+                    }
+                }
+                ))
+            .subscribe(res => {
+                this.movieList = res.movies;
+            })
     }
 }

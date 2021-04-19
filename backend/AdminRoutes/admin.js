@@ -20,7 +20,7 @@ router.post('/login', adminController.postLogin);
 
 router.post('/addMovie', adminController.addMovie); 
 
-router.post('/getMovies', adminController.getMovies); 
+router.get('/getMovies', adminController.getMovies); 
 
 console.log("after login");
 module.exports = router;

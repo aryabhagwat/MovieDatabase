@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MovieModel } from 'src/app/models/movie.model';
 
 @Component({
     selector: 'movieCard',
@@ -11,15 +12,13 @@ export class MovieCardComponent implements OnInit{
 
     defaultImage = 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Back_to_the_Future.jpg/220px-Back_to_the_Future.jpg';
 
-    @Input() movie: {
-        name: string,
-        genre: Array<FormGroup>,
-        desc: string,
-        imageURL: string,
-        displayButtons: boolean,
-    };
+    @Input() movie: MovieModel;
 
 
     ngOnInit(): void {
+    }
+
+    editCard(){
+        // console.log(this.movie.id);
     }
 }
