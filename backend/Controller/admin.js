@@ -57,7 +57,8 @@ exports.getMovies = (req, res, next) => {
 };
 
 exports.getMovieByID = (req, res, next) => {
-    const movieId = req.params.postId;
+    const movieId = req.params.movieId;
+    console.log("in getMovieByID")
     Post.findById(movieId)
       .then(movie => {
         if (!movie) {
