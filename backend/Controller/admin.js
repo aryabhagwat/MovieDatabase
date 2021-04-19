@@ -56,6 +56,24 @@ exports.getMovies = (req, res, next) => {
     })*/
 };
 
+exports.getMovieByID = (req, res, next) => {
+    const movieId = req.params.postId;
+    Post.findById(movieId)
+      .then(movie => {
+        if (!movie) {
+          const error = new Error('Cannot find the movie.');
+          error.statusCode = 404;
+          throw error;
+        }
+        res.status(200).json({ message: 'Movie found.', movie: movie });
+      })
+      .catch(err => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
+      });
+  };
 
 exports.gettestLogin = (req, res, next) => {
     /*  console.log("you are in controller postLogin");*/
