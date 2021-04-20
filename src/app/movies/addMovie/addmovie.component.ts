@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MovieModel } from "src/app/models/movie.model";
 import { MovieService } from "../movie.services";
+import { map } from "rxjs/operators";
 
 @Component({
     selector: 'add-movie',
@@ -13,6 +14,8 @@ export class AddMovieComponent implements OnInit {
 
     isEditMode: boolean = false;
     isLoading: boolean = true;
+    movie: MovieModel;
+
 
     movieAddForm: FormGroup = new FormGroup({
         movieName: new FormControl(''),
@@ -34,8 +37,20 @@ export class AddMovieComponent implements OnInit {
                 if (res.id) {
                     this.isEditMode = true;
                     this.movieService.getMovie(res.id)
+                        .pipe(
+                            map((response:any) => {
+                                return {
+                                    message: response.message,
+                                    movie: {
+                                        id: response.movie._id,
+                                        ...response.movie
+                                    }
+                                }
+                            })
+                        )
                         .subscribe((result: {message: string, movie: MovieModel}) => {
-                            let res = result.movie;
+                            this.movie = result.movie;
+                            let res = this.movie;
                             this.movieAddForm.patchValue({
                                 movieName: res.title,
                                 movieGenre: res.genre,
@@ -57,11 +72,10 @@ export class AddMovieComponent implements OnInit {
 
     get enteredDetails() {
         return {
-            name: this.movieAddForm.get('movieName').value,
+            title: this.movieAddForm.get('movieName').value,
             genre: this.controls,
-            desc: this.movieAddForm.get('movieDescription').value,
-            imageURL: this.movieAddForm.get('movieImage').value,
-            displayButtons: false,
+            description: this.movieAddForm.get('movieDescription').value,
+            imageURL: this.movieAddForm.get('movieImage').value
         }
     }
 
@@ -107,5 +121,12 @@ export class AddMovieComponent implements OnInit {
 
     onCancel(){
         this.router.navigate(['/movies']);
+    }
+
+    onDelete(){
+        this.movieService.deleteMovie(this.movie.id)
+            .subscribe(response => {
+                this.router.navigate(['/movies']);
+            })
     }
 }

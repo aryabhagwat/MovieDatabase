@@ -7,16 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap');
 
 /*
-COLORS 
+COLORS
 #6474E5
 */
 
 body, html {
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
   }
- 
+
 .my-container{
   width: 100%;
   height: 100%;
@@ -31,7 +32,7 @@ body, html {
   font-weight: bold;
   border: 1px solid #6474E5;
   color: #fff;
-  background-color: #6474E5; 
+  background-color: #6474E5;
   transition: 0.2s all ease-in-out;
 }
 
@@ -43,7 +44,7 @@ body, html {
 }
 
 .customButton:active{
-  color: #6474E5 !important; 
+  color: #6474E5 !important;
   background-color: #fff !important;
   border-color: #6474E5 !important;
   transition: 0.2s all ease-in-out;
@@ -61,13 +62,13 @@ body, html {
   color: #6474E5;
   background-color:#fff;
   border-color: #6474E5;
-  transition: 0.2s all ease-in-out; 
+  transition: 0.2s all ease-in-out;
 }
 
 .customButton2:hover{
   color: #6474E5;
   background-color:#fff;
-  border-color: #6474E5; 
+  border-color: #6474E5;
   transition: 0.2s all ease-in-out;
 }
 
@@ -82,7 +83,7 @@ body, html {
 .customButton2:focus{
   color: #6474E5;
   background-color:#fff;
-  border-color: #6474E5; 
+  border-color: #6474E5;
   transition: 0.2s all ease-in-out;
   box-shadow: none !important;
 }
@@ -112,17 +113,17 @@ textarea:focus{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #fff; 
+  box-shadow: inset 0 0 5px #fff;
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #6474E5; 
+  background: #6474E5;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #6474E5; 
+  background: #6474E5;
 }

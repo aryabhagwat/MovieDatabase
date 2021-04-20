@@ -36,4 +36,8 @@ export class MovieService {
             console.log(res);
         })
     }
+
+    deleteMovie(movieID: string){
+        return this.http.delete('http://localhost:3000/admin/movies/' + movieID);
+    }
 }
