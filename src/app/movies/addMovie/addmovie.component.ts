@@ -12,6 +12,7 @@ import { MovieService } from "../movie.services";
 export class AddMovieComponent implements OnInit {
 
     isEditMode: boolean = false;
+    isLoading: boolean = true;
 
     movieAddForm: FormGroup = new FormGroup({
         movieName: new FormControl(''),
@@ -33,17 +34,20 @@ export class AddMovieComponent implements OnInit {
                 if (res.id) {
                     this.isEditMode = true;
                     this.movieService.getMovie(res.id)
-                        .subscribe((res: MovieModel) => {
-                            this.movieAddForm.setValue({
+                        .subscribe((result: {message: string, movie: MovieModel}) => {
+                            let res = result.movie;
+                            this.movieAddForm.patchValue({
                                 movieName: res.title,
                                 movieGenre: res.genre,
                                 movieDescription: res.description,
                                 movieImage: res.imageURL,
                             })
+                            this.isLoading = false;
                         })
 
                 }else{
                     this.isEditMode = false;
+                    this.isLoading = false;
                 }
             })
 
@@ -97,6 +101,7 @@ export class AddMovieComponent implements OnInit {
         }else{
             this.movieService.addMovie(movie);
         }
+        this.router.navigate(['/movies']);
 
     }
 
