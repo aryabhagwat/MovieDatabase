@@ -59,7 +59,7 @@ exports.getMovies = (req, res, next) => {
 exports.getMovieByID = (req, res, next) => {
     const movieId = req.params.movieId;
     console.log("in getMovieByID")
-    Post.findById(movieId)
+    Movie.findById(movieId)
       .then(movie => {
         if (!movie) {
           const error = new Error('Cannot find the movie.');

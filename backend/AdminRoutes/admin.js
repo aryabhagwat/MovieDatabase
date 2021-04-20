@@ -22,7 +22,7 @@ router.post('/addMovie', adminController.addMovie);
 
 router.get('/getMovies', adminController.getMovies); 
 
-router.get('/movies', adminController.getMovieByID); 
+router.get('/movies/:movieId', adminController.getMovieByID); 
 
 console.log("after login");
 module.exports = router;
