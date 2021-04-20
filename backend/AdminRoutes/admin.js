@@ -24,7 +24,7 @@ router.get('/getMovies', adminController.getMovies);
 
 router.get('/movies/:movieId', adminController.getMovieByID); 
 
-router.get('/deletemovie/:movieId', adminController.deleteMovieByID); 
+router.delete('/deletemovie/:movieId', adminController.deleteMovieByID); 
 
 console.log("after login");
 module.exports = router;
