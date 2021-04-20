@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators';
 export class MovieListComponent implements OnInit {
     movieList:MovieModel;
 
+    isLoading: boolean = true;
+
     constructor(private movieService: MovieService) {
 
     }
@@ -33,6 +35,7 @@ export class MovieListComponent implements OnInit {
                 ))
             .subscribe(res => {
                 this.movieList = res.movies;
+                this.isLoading = false;
             })
     }
 }

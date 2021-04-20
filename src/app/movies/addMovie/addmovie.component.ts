@@ -12,7 +12,7 @@ import { MovieService } from "../movie.services";
 export class AddMovieComponent implements OnInit {
 
     isEditMode: boolean = false;
-    
+
     movieAddForm: FormGroup = new FormGroup({
         movieName: new FormControl(''),
         movieGenre: new FormControl(''),
@@ -27,19 +27,29 @@ export class AddMovieComponent implements OnInit {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.route.params
             .subscribe(res => {
-                if(res.id){
+                if (res.id) {
                     this.isEditMode = true;
-                    
+                    this.movieService.getMovie(res.id)
+                        .subscribe((res: MovieModel) => {
+                            this.movieAddForm.setValue({
+                                movieName: res.title,
+                                movieGenre: res.genre,
+                                movieDescription: res.description,
+                                movieImage: res.imageURL,
+                            })
+                        })
 
+                }else{
+                    this.isEditMode = false;
                 }
             })
-        
+
     }
 
-    
+
 
     get enteredDetails() {
         return {
@@ -72,7 +82,7 @@ export class AddMovieComponent implements OnInit {
         (<FormArray>this.movieAddForm.get('movieBadge')).removeAt(index);
     }
 
-    addMovie() {
+    submitButton() {
         let movie: MovieModel = {
             id: '123123',
             title: this.movieAddForm.value.movieName,
@@ -81,7 +91,16 @@ export class AddMovieComponent implements OnInit {
             imageURL: this.movieAddForm.value.movieImage,
             rating: 5
         }
-       
-        this.movieService.addMovie(movie);
+
+        if(this.isEditMode){
+            this.movieService.editMovie(movie);
+        }else{
+            this.movieService.addMovie(movie);
+        }
+
+    }
+
+    onCancel(){
+        this.router.navigate(['/movies']);
     }
 }
