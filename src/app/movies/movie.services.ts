@@ -23,4 +23,14 @@ export class MovieService {
     getMovies() {
         return this.http.get('http://localhost:3000/admin/getMovies')
     }
+
+    getMovie(id: string){
+        return this.http.get('http://localhost:3000/admin/movies/' + id); 
+    }
+
+    editMovie(movie: MovieModel){
+        this.http.put('http://localhost:3000/admin/movies/' + movie.id, 
+            movie
+        )
+    }
 }

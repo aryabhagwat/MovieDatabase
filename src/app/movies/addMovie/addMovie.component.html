@@ -42,8 +42,8 @@
                         <div class="col-md-12 ">
                             <button 
                                 type="button" 
-                                class="btn btn-success btn-block submitButtons customButton" (click)="addMovie()">
-                                ADD
+                                class="btn btn-success btn-block submitButtons customButton" (click)="submitButton()">
+                                {{ isEditMode ? 'UPDATE' : 'ADD' }}
                             </button>
                             <button 
                                 type="button" 
