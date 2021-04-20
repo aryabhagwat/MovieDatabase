@@ -1,12 +1,10 @@
 <div class="loader" *ngIf="isLoading">
-    <loader ></loader>
+    <loader></loader>
 </div>
-<div class="my-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" *ngFor="let movie of movieList">
-                <movieCard [movie]=movie [displayButtons]="true"></movieCard>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let movie of movieList">
+            <movieCard [movie]=movie [displayButtons]="true"></movieCard>
         </div>
     </div>
 </div>

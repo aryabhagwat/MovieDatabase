@@ -32,5 +32,8 @@ export class MovieService {
         this.http.put('http://localhost:3000/admin/movies/' + movie.id, 
             movie
         )
+        .subscribe(res=> {
+            console.log(res);
+        })
     }
 }

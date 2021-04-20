@@ -10,7 +10,7 @@ import { MovieModel } from 'src/app/models/movie.model';
 export class MovieCardComponent implements OnInit{
 
 
-    defaultImage = 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Back_to_the_Future.jpg/220px-Back_to_the_Future.jpg';
+    defaultImage = '';
 
     @Input() movie: MovieModel;
     @Input() displayButtons:boolean;
