@@ -46,16 +46,21 @@
                                 {{ isEditMode ? 'UPDATE' : 'ADD' }}
                             </button>
                             <button 
+                                (click)="onCancel()"
                                 type="button" 
                                 class="btn btn-danger btn-block customButton2">
                                 CANCEL
                             </button>
+                            <button
+                            type="button"
+                            class="btn btn-danger btn-block"
+                            >DELETE</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-md-4">
-                <movieCard [movie]="enteredDetails"></movieCard>
+                <movieCard [movie]="enteredDetails" [displayButtons]="false"></movieCard>
             </div>
         </div>
     </div>

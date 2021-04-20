@@ -99,4 +99,8 @@ export class AddMovieComponent implements OnInit {
         }
 
     }
+
+    onCancel(){
+        this.router.navigate(['/movies']);
+    }
 }
