@@ -94,3 +94,29 @@ exports.postLogin = (req, res, next) => {
         User: { id: new Date().toISOString(), email: email, password: password }
     });
 };
+
+
+exports.deleteMovieByID = (req,res,next) => {
+    const movieId = req.params.movieId;
+    console.log("in getMovieByID")
+    Movie.findById(movieId)
+        .then(movie => {
+            if (!movie) {
+                const error = new Error('Cannot find the movie.');
+                error.statusCode = 404;
+                throw error;
+            }
+            return Movie.findByIdAndDelete(movieId);
+        })
+        .then(moviedeleted => {
+            console.log("Movie deleted");
+            res.status(200).json({ message: 'Movie deleted.' });
+        })
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+
+}
