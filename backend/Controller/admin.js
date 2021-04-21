@@ -39,42 +39,42 @@ exports.getMovies = (req, res, next) => {
     console.log("you are in getMovies ");
 
     Movie.find()
-    .then(movies => {
-        console.log("In get movies");
-        console.log(movies);
-        res.status(200).json({message: 'Movies Received',movies:[...movies]});
-    })
-    .catch(err => {
-        if (!err.statusCode) {
-            err.statusCode = 500;
-        }
-        next(err);
-    });
+        .then(movies => {
+            console.log("In get movies");
+            console.log(movies);
+            res.status(200).json({ message: 'Movies Received', movies: [...movies] });
+        })
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
 
-   /* res.status(200).json({
-        user: [{ "name": "arya", "email": "testemail@test.com" }]
-    })*/
+    /* res.status(200).json({
+         user: [{ "name": "arya", "email": "testemail@test.com" }]
+     })*/
 };
 
 exports.getMovieByID = (req, res, next) => {
     const movieId = req.params.movieId;
     console.log("in getMovieByID")
     Movie.findById(movieId)
-      .then(movie => {
-        if (!movie) {
-          const error = new Error('Cannot find the movie.');
-          error.statusCode = 404;
-          throw error;
-        }
-        res.status(200).json({ message: 'Movie found.', movie: movie });
-      })
-      .catch(err => {
-        if (!err.statusCode) {
-          err.statusCode = 500;
-        }
-        next(err);
-      });
-  };
+        .then(movie => {
+            if (!movie) {
+                const error = new Error('Cannot find the movie.');
+                error.statusCode = 404;
+                throw error;
+            }
+            res.status(200).json({ message: 'Movie found.', movie: movie });
+        })
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
+};
 
 exports.gettestLogin = (req, res, next) => {
     /*  console.log("you are in controller postLogin");*/
@@ -96,7 +96,7 @@ exports.postLogin = (req, res, next) => {
 };
 
 
-exports.deleteMovieByID = (req,res,next) => {
+exports.deleteMovieByID = (req, res, next) => {
     const movieId = req.params.movieId;
     console.log("in getMovieByID")
     Movie.findById(movieId)
@@ -119,4 +119,28 @@ exports.deleteMovieByID = (req,res,next) => {
             next(err);
         });
 
+}
+
+exports.updateMovieByID = (res, req, next) => {
+    const movieId = req.params.movieId;
+    console.log("in updateMovieByID");
+    Movie.findById(movieId)
+        .then(movie => {
+            if (!movie) {
+                const error = new Error("Cannot find the movie");
+                error.statusCode = 404;
+                throw error;
+            }
+            return Movie.findByIdAndUpdate(movieId);
+        })
+        .then(movieupdated => {
+            res.status(200).json({ message: 'Movie updated' });
+        }
+        )
+        .catch(err => {
+            if (!err.statusCode) {
+                err.statusCode = 500;
+            }
+            next(err);
+        });
 }
