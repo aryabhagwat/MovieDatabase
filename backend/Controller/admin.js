@@ -121,10 +121,11 @@ exports.deleteMovieByID = (req, res, next) => {
 
 }
 
-exports.updateMovieByID = (res, req, next) => {
+exports.updateMovieByID = (req, res, next) => {
     
     console.log("requrest body:");
     console.log(req.body);
+    console.log("requrest body end");
     const movieId = req.body._id;
     const title = req.body.title;
     const description = req.body.description;
@@ -138,10 +139,10 @@ exports.updateMovieByID = (res, req, next) => {
                 error.statusCode = 404;
                 throw error;
             }
-            title = title;
-            description = description;
-            genre = genre;
-            imageURL = imageURL;
+            movie.title = title;
+            movie.description = description;
+            movie.genre = genre;
+            movie.imageURL = imageURL;
 
             return movie.save();
         })
