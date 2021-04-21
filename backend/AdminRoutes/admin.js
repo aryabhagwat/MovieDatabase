@@ -26,7 +26,7 @@ router.get('/movies/:movieId', adminController.getMovieByID);
 
 router.delete('/movies/:movieId', adminController.deleteMovieByID); 
 
-router.put('/movies/:movieId', adminController.updateMovieByID); 
+router.put('/movies', adminController.updateMovieByID); 
 
 console.log("after login");
 module.exports = router;

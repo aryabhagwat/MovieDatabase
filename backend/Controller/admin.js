@@ -122,7 +122,14 @@ exports.deleteMovieByID = (req, res, next) => {
 }
 
 exports.updateMovieByID = (res, req, next) => {
-    const movieId = req.params.movieId;
+    
+    console.log("requrest body:");
+    console.log(req.body);
+    const movieId = req.body._id;
+    const title = req.body.title;
+    const description = req.body.description;
+    const genre = req.body.genre;
+    const imageURL = req.body.imageURL;
     console.log("in updateMovieByID");
     Movie.findById(movieId)
         .then(movie => {
@@ -131,10 +138,15 @@ exports.updateMovieByID = (res, req, next) => {
                 error.statusCode = 404;
                 throw error;
             }
-            return Movie.findByIdAndUpdate(movieId);
+            title = title;
+            description = description;
+            genre = genre;
+            imageURL = imageURL;
+
+            return movie.save();
         })
         .then(movieupdated => {
-            res.status(200).json({ message: 'Movie updated' });
+            res.status(200).json({ message: 'Movie updated',movie:movieupdated });
         }
         )
         .catch(err => {
