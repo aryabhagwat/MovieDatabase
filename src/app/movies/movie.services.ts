@@ -24,20 +24,27 @@ export class MovieService {
         return this.http.get('http://localhost:3000/admin/getMovies')
     }
 
-    getMovie(id: string){
-        return this.http.get('http://localhost:3000/admin/movies/' + id); 
+    getMovie(id: string) {
+        return this.http.get('http://localhost:3000/admin/movies/' + id);
     }
 
-    editMovie(movie: MovieModel){
-        this.http.put('http://localhost:3000/admin/movies/' + movie.id, 
-            movie
+    editMovie(movie: MovieModel) {
+        let updatedMovie = {
+            _id: movie.id,
+            title: movie.title,
+            description: movie.description,
+            genre: movie.genre,
+            imageURL: movie.imageURL
+        }
+        this.http.put('http://localhost:3000/admin/movies/',
+            updatedMovie
         )
-        .subscribe(res=> {
-            console.log(res);
-        })
+            .subscribe(res => {
+                console.log(res);
+            })
     }
 
-    deleteMovie(movieID: string){
+    deleteMovie(movieID: string) {
         return this.http.delete('http://localhost:3000/admin/movies/' + movieID);
     }
 }

@@ -102,7 +102,7 @@ export class AddMovieComponent implements OnInit {
 
     submitButton() {
         let movie: MovieModel = {
-            id: '123123',
+            id: this.movie.id,
             title: this.movieAddForm.value.movieName,
             genre: this.movieAddForm.value.movieGenre,
             description: this.movieAddForm.value.movieDescription,
@@ -115,7 +115,7 @@ export class AddMovieComponent implements OnInit {
         }else{
             this.movieService.addMovie(movie);
         }
-        this.router.navigate(['/movies']);
+        // this.router.navigate(['/movies']);
 
     }
 
