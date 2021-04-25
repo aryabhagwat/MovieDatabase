@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     next();
 });
 
-/*testing push */
+/*testing push 1*/
 
 app.use('/admin', adminRoutes);
 
