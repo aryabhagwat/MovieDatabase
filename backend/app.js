@@ -24,6 +24,8 @@ app.use((req, res, next) => {
     next();
 });
 
+/*testing push */
+
 app.use('/admin', adminRoutes);
 
 app.post('/login', function (req, res,next) {
